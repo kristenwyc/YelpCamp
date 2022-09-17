@@ -1,3 +1,10 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
+console.log(process.env.SECRET)
+console.log(process.env.API_KEY)
+
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -59,6 +66,8 @@ app.get('/fakeUser', async(req, res) => {
 
 
 app.use((req, res, next) => {
+    console.log(req.session)
+    res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     next();
