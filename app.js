@@ -35,7 +35,7 @@ const dbUrl = "mongodb://localhost:27017/yelp-camp";
 main().catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect("dbUrl");
+    await mongoose.connect(dbUrl);
     console.log('Database connected!!')
 }
 
